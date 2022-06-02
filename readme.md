@@ -8,4 +8,4 @@ three.js 处处都使用的国际单位制
     * 时间以秒为单位
     * 光照以国际光照强度单位测量， 坎德拉(cd)、流明 (lm) 和勒克斯 (lx)（至少你需开启renderer.physicallyCorrectLights）。
 
-https://discoverthreejs.com/book/first-steps/physically-based-rendering/
+https://discoverthreejs.com/book/first-steps/textures-intro/
