@@ -3,6 +3,7 @@ import { createCube } from './components/cube.js';
 import { createScene } from './components/scene.js';
 import { createLights } from './components/light.js';
 import { createRenderer } from './systems/renderer.js';
+import { createMeshGroup } from './components/meshGroup.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js'
 import { createControls } from './systems/control.js';
@@ -32,11 +33,13 @@ export default class World {
         const controls = createControls(camera, renderer.domElement);
         controls.target.copy(cube.position);
         controls.enableDamping = true;
+        const group = createMeshGroup()
 
-        loop.updatables.push(controls)
-        const light = createLights();
-        scene.add(cube, light);
-        // cube.add(cube2)
+        loop.updatables.push(controls, group)
+
+
+        const lights = createLights();
+        scene.add(lights.ambientLight, lights.mainLight, group);
 
         const resizer = new Resizer(container, camera, renderer)
         resizer.onResize = () => {
